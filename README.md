@@ -12,7 +12,7 @@ Sitio web estático (HTML5 + CSS + JS) de la plataforma que conecta particulares
 - Revisar las páginas legales con un profesional jurídico.
 - Añadir `img/og-image.png` (1200×630) para las vistas previas en redes.
 - Conectar el formulario del buscador (`js/main.js`) a un backend o servicio de formularios.
-- Crear el buzón `profesionales@echamano.es` (enlazado en la portada) o sustituirlo por otro correo.
+- Todos los contactos y formularios (contacto, privacidad, alta de profesionales) se centralizan en `iaproyectosppm@gmail.com`; no hace falta crear buzones en echamano.es.
 
 ## Desarrollo local
 Las rutas son absolutas (`/css/...`), así que sírvelo desde la raíz:
