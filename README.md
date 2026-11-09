@@ -9,10 +9,10 @@ Sitio web estático (HTML5 + CSS + JS) de la plataforma que conecta particulares
 - `sitemap.xml`, `robots.txt`, `favicon.svg`
 
 ## Pendiente antes de publicar
-- Rellenar los datos del titular (resaltados en amarillo, clase `.todo`) en las páginas legales y revisarlas con un profesional jurídico.
+- Revisar las páginas legales con un profesional jurídico.
 - Añadir `img/og-image.png` (1200×630) para las vistas previas en redes.
 - Conectar el formulario del buscador (`js/main.js`) a un backend o servicio de formularios.
-- Crear los buzones `hola@`, `privacidad@` y `profesionales@` en echamano.es.
+- Crear el buzón `profesionales@echamano.es` (enlazado en la portada) o sustituirlo por otro correo.
 
 ## Desarrollo local
 Las rutas son absolutas (`/css/...`), así que sírvelo desde la raíz:
