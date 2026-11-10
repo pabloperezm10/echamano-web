@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EchaMano | Encuentra profesionales y presupuestos para reformas y servicios del hogar</title>
+  <title>EchaMano | Profesionales y presupuestos para reformas y servicios del hogar</title>
   <meta name="description" content="Encuentra electricistas, fontaneros, manitas, empresas de reformas y limpieza cerca de ti. Compara presupuestos gratis de profesionales verificados en toda España.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://echamano.es/">
@@ -21,6 +21,7 @@
   <meta name="twitter:title" content="EchaMano | Profesionales y presupuestos para tu hogar">
   <meta name="twitter:description" content="Compara presupuestos gratis de profesionales verificados cerca de ti.">
 
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="/css/styles.css">
 
   <script type="application/ld+json">
@@ -33,6 +34,7 @@
         "name": "EchaMano",
         "url": "https://echamano.es/",
         "logo": "https://echamano.es/favicon.svg",
+        "email": "iaproyectosppm@gmail.com",
         "description": "Plataforma que conecta a particulares con empresas y profesionales cualificados de servicios del hogar en España.",
         "areaServed": { "@type": "Country", "name": "España" }
       },
@@ -67,52 +69,95 @@
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cerrajeros" } }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "¿Cuesta algo pedir presupuesto?", "acceptedAnswer": { "@type": "Answer", "text": "No. Para los particulares, solicitar presupuestos es gratuito y sin compromiso." } },
+          { "@type": "Question", "name": "¿Cómo se verifica a los profesionales?", "acceptedAnswer": { "@type": "Answer", "text": "Comprobamos su identidad y la documentación de su actividad antes de publicar su perfil." } },
+          { "@type": "Question", "name": "¿En qué zonas funciona EchaMano?", "acceptedAnswer": { "@type": "Answer", "text": "Estamos ampliando la cobertura por toda España. Indícanos tu código postal y te avisaremos." } },
+          { "@type": "Question", "name": "¿Quién realiza el trabajo y cobra el servicio?", "acceptedAnswer": { "@type": "Answer", "text": "El servicio lo presta y factura directamente el profesional o empresa que elijas. EchaMano actúa como plataforma de intermediación." } },
+          { "@type": "Question", "name": "¿Cómo funciona para los profesionales?", "acceptedAnswer": { "@type": "Answer", "text": "El registro es gratuito y sin permanencia. Pagas solo cuando decides contactar con un cliente, sin cuotas mensuales obligatorias." } }
+        ]
       }
     ]
   }
   </script>
 </head>
 <body>
+  <!-- Iconos (sprite SVG) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.7s6 6.3 6 10.8a6 6 0 0 1-12 0C6 9 12 2.7 12 2.7z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7V21h3.3l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+    <symbol id="i-paint" viewBox="0 0 24 24"><path d="M4 4h13v5H4zM17 6.5h3v5h-8v3M11 14.5h2v6h-2z"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 17L17 3l4 4L7 21zM8 12l2 2M11 9l2 2M14 6l2 2"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM8.5 12l2.5 2.5L16 9.5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20 12l-8 8-9-9V3h8zM7.5 7.5h.01"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><path d="M3 9h18v4H3zM5 13v8h14v-8M12 9v12M12 9S9 9 8.5 6.5 12 4 12 9zM12 9s3 0 3.5-2.5S12 4 12 9z"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></symbol>
+    <symbol id="i-user-plus" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM19 8v6M16 11h6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  </svg>
+
   <a class="skip" href="#main">Saltar al contenido</a>
 
-  <header class="site-header">
+  <header class="site-header" id="top">
     <div class="container nav">
-      <a class="logo" href="/" aria-label="EchaMano, inicio"><span class="logo-mark" aria-hidden="true">✓</span>Echa<b>Mano</b></a>
-      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <a class="logo" href="/" aria-label="EchaMano, inicio"><span class="logo-mark" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span><span>Echa<b>Mano</b></span></a>
+      <a class="btn btn-primary btn-sm nav-cta" href="#presupuesto">Pedir presupuesto</a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><svg class="icon"><use href="#i-menu"/></svg></button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#como-funciona">Cómo funciona</a></li>
         <li><a href="#confianza">Garantías</a></li>
-        <li><a href="#profesionales">Para profesionales</a></li>
-        <li><a class="btn btn-primary" href="#buscador">Pedir presupuesto</a></li>
+        <li><a href="#captacion">Para profesionales</a></li>
       </ul>
     </div>
   </header>
 
   <main id="main">
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div>
           <span class="eyebrow">Servicios del hogar y reformas en toda España</span>
-          <h1>Encuentra al <span>profesional ideal</span> o consigue presupuestos</h1>
+          <h1 id="hero-title">Encuentra al <span>profesional ideal</span> o consigue presupuestos</h1>
           <p class="lead">Cuéntanos qué necesitas y recibe propuestas de electricistas, fontaneros, manitas, empresas de reformas y limpieza. Compara, elige y contrata con tranquilidad.</p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#buscador">Pedir presupuesto gratis</a>
-            <a class="btn btn-outline" href="#profesionales">Soy profesional</a>
-          </div>
-          <ul class="hero-points">
-            <li>Gratis y sin compromiso</li>
-            <li>Profesionales verificados</li>
-            <li>Valoraciones reales</li>
+
+          <ul class="chips" aria-label="Servicios más pedidos">
+            <li><button class="chip" type="button" data-value="Reformas"><svg class="icon"><use href="#i-home"/></svg>Reformas</button></li>
+            <li><button class="chip" type="button" data-value="Electricista"><svg class="icon"><use href="#i-bolt"/></svg>Electricista</button></li>
+            <li><button class="chip" type="button" data-value="Fontanero"><svg class="icon"><use href="#i-drop"/></svg>Fontanero</button></li>
+            <li><button class="chip" type="button" data-value="Manitas"><svg class="icon"><use href="#i-wrench"/></svg>Manitas</button></li>
+            <li><button class="chip" type="button" data-value="Limpieza"><svg class="icon"><use href="#i-sparkle"/></svg>Limpieza</button></li>
+          </ul>
+
+          <ul class="benefits">
+            <li class="benefit"><span class="icon-wrap"><svg class="icon"><use href="#i-tag"/></svg></span><div><strong>Gratis y sin compromiso</strong><span>Pide presupuesto sin coste.</span></div></li>
+            <li class="benefit"><span class="icon-wrap"><svg class="icon"><use href="#i-shield"/></svg></span><div><strong>Profesionales verificados</strong><span>Revisamos su identidad y documentación.</span></div></li>
+            <li class="benefit"><span class="icon-wrap"><svg class="icon"><use href="#i-star"/></svg></span><div><strong>Valoraciones reales</strong><span>Opiniones de clientes que han contratado.</span></div></li>
           </ul>
         </div>
 
-        <div class="search-card">
-          <h2>¿Qué necesitas?</h2>
-          <form id="buscador" novalidate>
+        <!-- Flujo de solicitud -->
+        <div class="request-card" id="presupuesto">
+          <h2>Pide tu presupuesto gratis</h2>
+          <p>Tarda menos de un minuto.</p>
+          <form id="buscador" name="presupuestos" method="POST" action="/gracias.html" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+            <input type="hidden" name="form-name" value="presupuestos">
+            <p class="hp" aria-hidden="true"><label>No rellenar: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
             <div class="field">
-              <label for="servicio">Servicio</label>
+              <label for="servicio">¿Qué servicio necesitas?</label>
               <select id="servicio" name="servicio" required>
                 <option value="">Selecciona un servicio…</option>
                 <option>Reformas</option>
@@ -128,67 +173,71 @@
             </div>
             <div class="field">
               <label for="cp">Código postal</label>
-              <input id="cp" name="cp" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="28001" required>
+              <input id="cp" name="cp" inputmode="numeric" maxlength="5" pattern="[0-9]{5}" autocomplete="postal-code" placeholder="11001" required>
             </div>
             <div class="field">
               <label for="email">Tu email</label>
               <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required>
             </div>
-            <button class="btn btn-primary" style="width:100%" type="submit">Buscar profesionales</button>
+            <label class="check" for="privacidad">
+              <input id="privacidad" name="privacidad" type="checkbox" value="aceptada" required>
+              <span>He leído y acepto la <a href="/politica-de-privacidad.html">política de privacidad</a>.</span>
+            </label>
+            <button class="btn btn-primary btn-block" type="submit">Buscar profesionales <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
             <p id="form-msg" class="form-msg" role="status" aria-live="polite"></p>
-            <p class="small">Al enviar aceptas la <a href="/politica-de-privacidad.html">política de privacidad</a>.</p>
+            <p class="form-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Tus datos solo se usan para gestionar tu solicitud.</p>
           </form>
         </div>
       </div>
     </section>
 
     <!-- CATEGORÍAS -->
-    <section id="servicios">
+    <section id="servicios" aria-labelledby="servicios-title">
       <div class="container">
-        <div class="section-head">
-          <h2>Todos los servicios que tu casa necesita</h2>
+        <div class="section-head" data-reveal>
+          <h2 id="servicios-title">Todos los servicios que tu casa necesita</h2>
           <p>Elige una categoría y te ponemos en contacto con profesionales de tu zona.</p>
         </div>
         <div class="cat-grid">
-          <button class="cat" type="button" data-value="Reformas" aria-pressed="false"><span class="ico" aria-hidden="true">🏗️</span>Reformas</button>
-          <button class="cat" type="button" data-value="Electricista" aria-pressed="false"><span class="ico" aria-hidden="true">⚡</span>Electricistas</button>
-          <button class="cat" type="button" data-value="Fontanero" aria-pressed="false"><span class="ico" aria-hidden="true">🚰</span>Fontaneros</button>
-          <button class="cat" type="button" data-value="Manitas" aria-pressed="false"><span class="ico" aria-hidden="true">🔧</span>Manitas</button>
-          <button class="cat" type="button" data-value="Limpieza" aria-pressed="false"><span class="ico" aria-hidden="true">🧽</span>Limpieza</button>
-          <button class="cat" type="button" data-value="Pintor" aria-pressed="false"><span class="ico" aria-hidden="true">🎨</span>Pintores</button>
-          <button class="cat" type="button" data-value="Carpintero" aria-pressed="false"><span class="ico" aria-hidden="true">🪚</span>Carpinteros</button>
-          <button class="cat" type="button" data-value="Cerrajero" aria-pressed="false"><span class="ico" aria-hidden="true">🔑</span>Cerrajeros</button>
+          <button class="cat" type="button" data-value="Reformas" aria-pressed="false" data-reveal><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg></span>Reformas</button>
+          <button class="cat" type="button" data-value="Electricista" aria-pressed="false" data-reveal style="--d:.05s"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-bolt"/></svg></span>Electricistas</button>
+          <button class="cat" type="button" data-value="Fontanero" aria-pressed="false" data-reveal style="--d:.1s"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-drop"/></svg></span>Fontaneros</button>
+          <button class="cat" type="button" data-value="Manitas" aria-pressed="false" data-reveal style="--d:.15s"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></span>Manitas</button>
+          <button class="cat" type="button" data-value="Limpieza" aria-pressed="false" data-reveal style="--d:.2s"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"/></svg></span>Limpieza</button>
+          <button class="cat" type="button" data-value="Pintor" aria-pressed="false" data-reveal style="--d:.25s"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-paint"/></svg></span>Pintores</button>
+          <button class="cat" type="button" data-value="Carpintero" aria-pressed="false" data-reveal style="--d:.3s"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-ruler"/></svg></span>Carpinteros</button>
+          <button class="cat" type="button" data-value="Cerrajero" aria-pressed="false" data-reveal style="--d:.35s"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg></span>Cerrajeros</button>
         </div>
       </div>
     </section>
 
-    <!-- CAPTACIÓN PROFESIONALES -->
+    <!-- CAPTACIÓN PROFESIONALES (B2B) -->
     <section id="captacion" class="pro-band" aria-labelledby="captacion-title">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <span class="eyebrow">Para profesionales y empresas</span>
           <h2 id="captacion-title">¿Eres profesional o tienes una empresa de servicios?</h2>
           <p>Únete a EchaMano y empieza a recibir solicitudes de clientes en tu zona.</p>
         </div>
         <ul class="perks">
-          <li class="perk">
-            <div class="perk-ico" aria-hidden="true">🆓</div>
+          <li class="perk" data-reveal>
+            <div class="perk-ico" aria-hidden="true"><svg class="icon"><use href="#i-user-plus"/></svg></div>
             <h3>Registro 100% gratuito</h3>
             <p>Sin permanencia. Date de alta cuando quieras y date de baja cuando quieras.</p>
           </li>
-          <li class="perk">
-            <div class="perk-ico" aria-hidden="true">🎁</div>
+          <li class="perk" data-reveal style="--d:.1s">
+            <div class="perk-ico" aria-hidden="true"><svg class="icon"><use href="#i-gift"/></svg></div>
             <h3>3 solicitudes gratis de bienvenida*</h3>
             <p>Prueba el servicio con 3 solicitudes de presupuesto sin coste.</p>
           </li>
-          <li class="perk">
-            <div class="perk-ico" aria-hidden="true">💳</div>
+          <li class="perk" data-reveal style="--d:.2s">
+            <div class="perk-ico" aria-hidden="true"><svg class="icon"><use href="#i-card"/></svg></div>
             <h3>Paga solo si contactas</h3>
             <p>Solo pagas cuando decides contactar con un cliente. Sin cuotas mensuales obligatorias.</p>
           </li>
         </ul>
-        <div class="pro-band-cta">
-          <a class="btn btn-primary btn-lg" href="mailto:iaproyectosppm@gmail.com?subject=Alta%20de%20profesional%20en%20EchaMano">Registrar mi empresa gratis</a>
+        <div class="pro-band-cta" data-reveal>
+          <a class="btn btn-primary btn-lg" href="mailto:iaproyectosppm@gmail.com?subject=Alta%20de%20profesional%20en%20EchaMano">Registrar mi empresa gratis <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <p class="small">Sin compromiso · Sin permanencia</p>
           <p class="small promo-note">* Promoción de bienvenida válida para nuevos registros de profesionales.</p>
         </div>
@@ -196,45 +245,45 @@
     </section>
 
     <!-- CÓMO FUNCIONA -->
-    <section id="como-funciona" class="bg-soft">
+    <section id="como-funciona" class="bg-soft" aria-labelledby="como-title">
       <div class="container">
-        <div class="section-head">
-          <h2>¿Cómo funciona EchaMano?</h2>
+        <div class="section-head" data-reveal>
+          <h2 id="como-title">¿Cómo funciona EchaMano?</h2>
           <p>Sencillo para quien necesita ayuda y para quien la ofrece.</p>
         </div>
         <div class="tabs" role="tablist" aria-label="Tipo de usuario">
-          <button class="tab" role="tab" id="tab-part" aria-selected="true" aria-controls="steps-part">Soy particular</button>
-          <button class="tab" role="tab" id="tab-pro" aria-selected="false" aria-controls="steps-pro">Soy profesional</button>
+          <button class="tab" role="tab" id="tab-part" aria-selected="true" aria-controls="steps-part" tabindex="0">Soy particular</button>
+          <button class="tab" role="tab" id="tab-pro" aria-selected="false" aria-controls="steps-pro" tabindex="-1">Soy profesional</button>
         </div>
-        <div class="steps" id="steps-part" role="tabpanel" aria-labelledby="tab-part">
-          <div class="step"><h3>Cuéntanos qué necesitas</h3><p>Describe el trabajo, tu zona y cuándo lo necesitas. Solo te llevará un minuto.</p></div>
-          <div class="step"><h3>Recibe presupuestos</h3><p>Profesionales cualificados de tu zona te enviarán sus propuestas.</p></div>
-          <div class="step"><h3>Compara y elige</h3><p>Revisa precios, perfiles y valoraciones, y habla directamente con ellos.</p></div>
-          <div class="step"><h3>Contrata con confianza</h3><p>Acuerda el trabajo y valora el servicio para ayudar a otros usuarios.</p></div>
-        </div>
-        <div class="steps" id="steps-pro" role="tabpanel" aria-labelledby="tab-pro" hidden>
-          <div class="step"><h3>Crea tu perfil</h3><p>Registra tu empresa o actividad, tus servicios y tu zona de trabajo.</p></div>
-          <div class="step"><h3>Verificamos tus datos</h3><p>Comprobamos tu identidad y documentación para generar confianza.</p></div>
-          <div class="step"><h3>Recibe solicitudes</h3><p>Accede a trabajos reales de clientes de tu zona y envía tu presupuesto.</p></div>
-          <div class="step"><h3>Consigue clientes y reseñas</h3><p>Cierra trabajos y construye tu reputación con valoraciones reales.</p></div>
-        </div>
+        <ol class="steps" id="steps-part" role="tabpanel" aria-labelledby="tab-part">
+          <li class="step"><h3>Cuéntanos qué necesitas</h3><p>Describe el trabajo, tu zona y cuándo lo necesitas. Solo te llevará un minuto.</p></li>
+          <li class="step"><h3>Recibe presupuestos</h3><p>Profesionales cualificados de tu zona te enviarán sus propuestas.</p></li>
+          <li class="step"><h3>Compara y elige</h3><p>Revisa precios, perfiles y valoraciones, y habla directamente con ellos.</p></li>
+          <li class="step"><h3>Contrata con confianza</h3><p>Acuerda el trabajo y valora el servicio para ayudar a otros usuarios.</p></li>
+        </ol>
+        <ol class="steps" id="steps-pro" role="tabpanel" aria-labelledby="tab-pro" hidden>
+          <li class="step"><h3>Crea tu perfil</h3><p>Registra tu empresa o actividad, tus servicios y tu zona de trabajo.</p></li>
+          <li class="step"><h3>Verificamos tus datos</h3><p>Comprobamos tu identidad y documentación para generar confianza.</p></li>
+          <li class="step"><h3>Recibe solicitudes</h3><p>Accede a trabajos reales de clientes de tu zona y envía tu presupuesto.</p></li>
+          <li class="step"><h3>Consigue clientes y reseñas</h3><p>Cierra trabajos y construye tu reputación con valoraciones reales.</p></li>
+        </ol>
       </div>
     </section>
 
     <!-- CONFIANZA -->
-    <section id="confianza">
+    <section id="confianza" aria-labelledby="confianza-title">
       <div class="container">
-        <div class="section-head">
-          <h2>Contrata con total confianza</h2>
+        <div class="section-head" data-reveal>
+          <h2 id="confianza-title">Contrata con total confianza</h2>
           <p>Trabajamos para que encontrar ayuda profesional sea seguro y transparente.</p>
         </div>
         <div class="trust-grid">
-          <div class="trust"><div class="ico" aria-hidden="true">🛡️</div><h3>Profesionales verificados</h3><p>Revisamos la identidad y la documentación de cada profesional antes de darle de alta.</p></div>
-          <div class="trust"><div class="ico" aria-hidden="true">⭐</div><h3>Valoraciones reales</h3><p>Solo pueden opinar los clientes que han contratado un servicio a través de la plataforma.</p></div>
-          <div class="trust"><div class="ico" aria-hidden="true">🤝</div><h3>Garantía de servicio</h3><p>Te ayudamos a mediar si algo no sale como esperabas. Tu satisfacción es lo primero.</p></div>
-          <div class="trust"><div class="ico" aria-hidden="true">💶</div><h3>Presupuestos transparentes</h3><p>Compara propuestas sin compromiso y sin costes ocultos para el particular.</p></div>
+          <div class="trust" data-reveal><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Profesionales verificados</h3><p>Revisamos la identidad y la documentación de cada profesional antes de darle de alta.</p></div>
+          <div class="trust" data-reveal style="--d:.08s"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span><h3>Valoraciones reales</h3><p>Solo pueden opinar los clientes que han contratado un servicio a través de la plataforma.</p></div>
+          <div class="trust" data-reveal style="--d:.16s"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-handshake"/></svg></span><h3>Garantía de servicio</h3><p>Te ayudamos a mediar si algo no sale como esperabas. Tu satisfacción es lo primero.</p></div>
+          <div class="trust" data-reveal style="--d:.24s"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg></span><h3>Presupuestos transparentes</h3><p>Compara propuestas sin compromiso y sin costes ocultos para el particular.</p></div>
         </div>
-        <div class="stats">
+        <div class="stats" data-reveal>
           <div class="stat"><strong>0 €</strong><span>para pedir presupuesto</span></div>
           <div class="stat"><strong>Toda España</strong><span>cobertura nacional</span></div>
           <div class="stat"><strong>Sin compromiso</strong><span>elige tú al profesional</span></div>
@@ -242,38 +291,39 @@
       </div>
     </section>
 
-    <!-- CTAs -->
-    <section id="profesionales" class="bg-soft">
+    <!-- CTAs diferenciadas -->
+    <section id="profesionales" class="bg-soft" aria-label="Empieza con EchaMano">
       <div class="container cta-grid">
-        <div class="cta-box cta-client">
+        <div class="cta-box cta-client" data-reveal>
           <h2>¿Necesitas un profesional?</h2>
           <ul>
             <li>Publica tu trabajo en un minuto</li>
             <li>Recibe varias propuestas</li>
             <li>Compara y elige sin compromiso</li>
           </ul>
-          <a class="btn btn-primary" href="#buscador">Pedir presupuesto gratis</a>
+          <a class="btn btn-primary" href="#presupuesto">Pedir presupuesto gratis <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
-        <div class="cta-box cta-pro">
+        <div class="cta-box cta-pro" data-reveal style="--d:.1s">
           <h2>¿Eres profesional o empresa?</h2>
           <ul>
             <li>Consigue clientes nuevos en tu zona</li>
             <li>Tú decides qué trabajos aceptar</li>
             <li>Construye tu reputación online</li>
           </ul>
-          <a class="btn btn-light" href="mailto:iaproyectosppm@gmail.com?subject=Alta%20de%20profesional%20en%20EchaMano">Registrar mi negocio</a>
+          <a class="btn btn-light" href="mailto:iaproyectosppm@gmail.com?subject=Alta%20de%20profesional%20en%20EchaMano">Registrar mi negocio <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section>
+    <section aria-labelledby="faq-title">
       <div class="container faq">
-        <div class="section-head"><h2>Preguntas frecuentes</h2></div>
+        <div class="section-head" data-reveal><h2 id="faq-title">Preguntas frecuentes</h2></div>
         <details><summary>¿Cuesta algo pedir presupuesto?</summary><p>No. Para los particulares, solicitar presupuestos es gratuito y sin compromiso.</p></details>
         <details><summary>¿Cómo se verifica a los profesionales?</summary><p>Comprobamos su identidad y la documentación de su actividad antes de publicar su perfil.</p></details>
         <details><summary>¿En qué zonas funciona EchaMano?</summary><p>Estamos ampliando la cobertura por toda España. Indícanos tu código postal y te avisaremos.</p></details>
         <details><summary>¿Quién realiza el trabajo y cobra el servicio?</summary><p>El servicio lo presta y factura directamente el profesional o empresa que elijas. EchaMano actúa como plataforma de intermediación.</p></details>
+        <details><summary>¿Cómo funciona para los profesionales?</summary><p>El registro es gratuito y sin permanencia. Pagas solo cuando decides contactar con un cliente, sin cuotas mensuales obligatorias.</p></details>
       </div>
     </section>
   </main>
@@ -281,23 +331,23 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div>
-          <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">✓</span>Echa<b>Mano</b></a>
+        <div class="footer-brand">
+          <a class="logo" href="/"><span class="logo-mark" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span><span>Echa<b>Mano</b></span></a>
           <p style="margin-top:.8rem">Conectamos a particulares con profesionales y empresas cualificadas.</p>
         </div>
-        <div><h3>Servicios</h3><ul><li><a href="#servicios">Reformas</a></li><li><a href="#servicios">Electricistas</a></li><li><a href="#servicios">Fontaneros</a></li><li><a href="#servicios">Limpieza</a></li></ul></div>
-        <div><h3>EchaMano</h3><ul><li><a href="#como-funciona">Cómo funciona</a></li><li><a href="#profesionales">Para profesionales</a></li><li><a href="mailto:iaproyectosppm@gmail.com">Contacto</a></li></ul></div>
-        <div><h3>Legal</h3><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/politica-de-privacidad.html">Privacidad</a></li><li><a href="/cookies.html">Cookies</a></li></ul></div>
+        <nav aria-label="Servicios"><h3>Servicios</h3><ul><li><a href="#servicios">Reformas</a></li><li><a href="#servicios">Electricistas</a></li><li><a href="#servicios">Fontaneros</a></li><li><a href="#servicios">Limpieza</a></li></ul></nav>
+        <nav aria-label="EchaMano"><h3>EchaMano</h3><ul><li><a href="#como-funciona">Cómo funciona</a></li><li><a href="#captacion">Para profesionales</a></li><li><a href="mailto:iaproyectosppm@gmail.com">Contacto</a></li></ul></nav>
+        <nav aria-label="Legal"><h3>Legal</h3><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/politica-de-privacidad.html">Privacidad</a></li><li><a href="/cookies.html">Cookies</a></li></ul></nav>
       </div>
-      <p class="copy">© 2026 EchaMano · echamano.es · Todos los derechos reservados.</p>
+      <p class="copy">© <span id="year">2026</span> EchaMano · echamano.es · Contacto y privacidad: <a href="mailto:iaproyectosppm@gmail.com">iaproyectosppm@gmail.com</a></p>
     </div>
   </footer>
 
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies">
     <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Más información en nuestra <a href="/cookies.html">política de cookies</a>.</p>
     <div class="cookie-actions">
-      <button id="cookie-accept" class="btn btn-primary" type="button">Aceptar todas</button>
-      <button id="cookie-reject" class="btn btn-outline" type="button">Solo necesarias</button>
+      <button id="cookie-accept" class="btn btn-primary btn-sm" type="button">Aceptar todas</button>
+      <button id="cookie-reject" class="btn btn-outline btn-sm" type="button">Solo necesarias</button>
     </div>
   </div>
 

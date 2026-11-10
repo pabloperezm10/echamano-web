@@ -12,13 +12,24 @@
   <meta property="og:title" content="Política de cookies | EchaMano">
   <meta property="og:description" content="Información sobre las cookies que utiliza echamano.es y cómo configurarlas.">
   <meta property="og:url" content="https://echamano.es/cookies.html">
+  <meta name="theme-color" content="#ff6b2c">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <header class="site-header"><div class="container nav">
-    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">✓</span>Echa<b>Mano</b></a>
-    <a class="btn btn-outline" href="/">Volver al inicio</a>
-  </div></header>
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="logo" href="/" aria-label="EchaMano, inicio"><span class="logo-mark" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Echa<b>Mano</b></span></a>
+      <a class="btn btn-primary btn-sm nav-cta" href="/#presupuesto">Pedir presupuesto</a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/#como-funciona">Cómo funciona</a></li>
+        <li><a href="/#confianza">Garantías</a></li>
+        <li><a href="/#captacion">Para profesionales</a></li>
+      </ul>
+    </div>
+  </header>
 
   <main class="container legal">
     <h1>Política de cookies</h1>
@@ -28,12 +39,12 @@
     <p>Las cookies y tecnologías similares (como el almacenamiento local del navegador) son pequeños archivos que un sitio web guarda en tu dispositivo para recordar información sobre tu visita.</p>
 
     <h2>2. Qué utilizamos actualmente</h2>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Nombre</th><th>Tipo</th><th>Finalidad</th><th>Duración</th></tr></thead>
       <tbody>
         <tr><td>em_cookies (almacenamiento local)</td><td>Técnica, propia</td><td>Recordar tu elección sobre el aviso de cookies</td><td>Hasta que la borres</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p>Actualmente el sitio <strong>no utiliza cookies analíticas ni publicitarias</strong>. Si en el futuro se incorporan (por ejemplo, Google Analytics), se pedirá tu consentimiento previo y se actualizará esta tabla.</p>
 
     <h2>3. Cómo gestionar o retirar tu consentimiento</h2>
@@ -50,17 +61,28 @@
     <p>Consulta nuestra <a href="/politica-de-privacidad.html">política de privacidad</a> o escríbenos a <a href="mailto:iaproyectosppm@gmail.com">iaproyectosppm@gmail.com</a>.</p>
   </main>
 
-  <footer class="site-footer"><div class="container">
-    <p class="copy" style="border:0;margin:0;padding:0">© 2026 EchaMano · <a href="/aviso-legal.html">Aviso legal</a> · <a href="/politica-de-privacidad.html">Privacidad</a> · <a href="/cookies.html">Cookies</a></p>
-  </div></footer>
-
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="EchaMano, inicio"><span class="logo-mark" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Echa<b>Mano</b></span></a>
+          <p style="margin-top:.8rem">Conectamos a particulares con profesionales y empresas cualificadas.</p>
+        </div>
+        <nav aria-label="Servicios"><h3>Servicios</h3><ul><li><a href="/#servicios">Reformas</a></li><li><a href="/#servicios">Electricistas</a></li><li><a href="/#servicios">Fontaneros</a></li><li><a href="/#servicios">Limpieza</a></li></ul></nav>
+        <nav aria-label="EchaMano"><h3>EchaMano</h3><ul><li><a href="/#como-funciona">Cómo funciona</a></li><li><a href="/#captacion">Para profesionales</a></li><li><a href="mailto:iaproyectosppm@gmail.com">Contacto</a></li></ul></nav>
+        <nav aria-label="Legal"><h3>Legal</h3><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/politica-de-privacidad.html">Privacidad</a></li><li><a href="/cookies.html">Cookies</a></li></ul></nav>
+      </div>
+      <p class="copy">© <span id="year">2026</span> EchaMano · echamano.es · Contacto y privacidad: <a href="mailto:iaproyectosppm@gmail.com">iaproyectosppm@gmail.com</a></p>
+    </div>
+  </footer>
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies">
-    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio.</p>
+    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Más información en nuestra <a href="/cookies.html">política de cookies</a>.</p>
     <div class="cookie-actions">
-      <button id="cookie-accept" class="btn btn-primary" type="button">Aceptar todas</button>
-      <button id="cookie-reject" class="btn btn-outline" type="button">Solo necesarias</button>
+      <button id="cookie-accept" class="btn btn-primary btn-sm" type="button">Aceptar todas</button>
+      <button id="cookie-reject" class="btn btn-outline btn-sm" type="button">Solo necesarias</button>
     </div>
   </div>
+
   <script src="/js/main.js" defer></script>
 </body>
 </html>

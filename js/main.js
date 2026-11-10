@@ -1,69 +1,132 @@
 (function () {
   'use strict';
 
+  var $ = function (s, ctx) { return (ctx || document).querySelector(s); };
+  var $$ = function (s, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(s)); };
+
+  // Año del copyright
+  var year = $('#year');
+  if (year) { year.textContent = new Date().getFullYear(); }
+
+  // Header: sombra al hacer scroll
+  var header = $('.site-header');
+  function onScroll() { if (header) header.classList.toggle('scrolled', window.scrollY > 8); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
   // Menú móvil
-  var toggle = document.querySelector('.nav-toggle');
-  var links = document.getElementById('nav-links');
+  var toggle = $('.nav-toggle');
+  var links = $('#nav-links');
+  function closeMenu() {
+    if (!links) return;
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
   if (toggle && links) {
     toggle.addEventListener('click', function () {
       var open = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
     });
-    links.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+    links.addEventListener('click', function (e) { if (e.target.tagName === 'A') closeMenu(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+  }
+
+  // Selector de servicios (chips del hero y categorías) -> rellena el formulario
+  var select = $('#servicio');
+  function pickService(value, btn) {
+    if (select) { select.value = value; select.removeAttribute('aria-invalid'); }
+    $$('.cat').forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+    var card = $('#presupuesto');
+    if (card) { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    var cp = $('#cp');
+    if (cp) { setTimeout(function () { cp.focus({ preventScroll: true }); }, 450); }
+  }
+  $$('.cat, .chip').forEach(function (btn) {
+    btn.addEventListener('click', function () { pickService(btn.dataset.value, btn.classList.contains('cat') ? btn : null); });
+  });
+
+  // Pestañas "Cómo funciona" (accesibles con teclado)
+  var tabs = $$('.tab');
+  function selectTab(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (panel) panel.hidden = !on;
+    });
+    tab.focus();
+  }
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { selectTab(tab); });
+    tab.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); selectTab(tabs[(i + 1) % tabs.length]); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); selectTab(tabs[(i - 1 + tabs.length) % tabs.length]); }
+    });
+  });
+
+  // Formulario de presupuestos (Netlify Forms vía fetch, con fallback de envío normal)
+  var form = $('#buscador');
+  if (form) {
+    var msg = $('#form-msg');
+    var btn = $('button[type="submit"]', form);
+    var setMsg = function (text, type) { msg.textContent = text; msg.className = 'form-msg ' + (type || ''); };
+    var invalid = function (el, text) { el.setAttribute('aria-invalid', 'true'); el.focus(); setMsg(text, 'err'); };
+
+    $$('input, select', form).forEach(function (el) {
+      el.addEventListener('input', function () { el.removeAttribute('aria-invalid'); });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = form.elements;
+      $$('[aria-invalid]', form).forEach(function (el) { el.removeAttribute('aria-invalid'); });
+
+      if (!f.servicio.value) return invalid(f.servicio, 'Elige el servicio que necesitas.');
+      if (!/^\d{5}$/.test(f.cp.value.trim())) return invalid(f.cp, 'Introduce un código postal válido de 5 dígitos.');
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())) return invalid(f.email, 'Introduce un email válido.');
+      if (!f.privacidad.checked) return invalid(f.privacidad, 'Debes aceptar la política de privacidad.');
+
+      btn.disabled = true;
+      setMsg('Enviando…');
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        form.reset();
+        $$('.cat').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        setMsg('¡Solicitud enviada! Te contactaremos en cuanto tengamos profesionales disponibles en tu zona.', 'ok');
+      }).catch(function () {
+        setMsg('No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos a iaproyectosppm@gmail.com.', 'err');
+      }).then(function () { btn.disabled = false; });
     });
   }
 
-  // Selector de categorías -> rellena el buscador
-  var select = document.getElementById('servicio');
-  document.querySelectorAll('.cat').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      document.querySelectorAll('.cat').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
-      btn.setAttribute('aria-pressed', 'true');
-      if (select) { select.value = btn.dataset.value; }
-      var form = document.getElementById('buscador');
-      if (form) { form.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-    });
-  });
-
-  // Pestañas "Cómo funciona"
-  document.querySelectorAll('.tab').forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      document.querySelectorAll('.tab').forEach(function (t) { t.setAttribute('aria-selected', String(t === tab)); });
-      document.querySelectorAll('.steps').forEach(function (s) { s.hidden = s.id !== tab.getAttribute('aria-controls'); });
-    });
-  });
-
-  // Formulario de búsqueda (sin backend todavía: valida y confirma)
-  var form = document.getElementById('buscador');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var msg = document.getElementById('form-msg');
-      var cp = form.elements['cp'].value.trim();
-      var serv = form.elements['servicio'].value;
-      var email = form.elements['email'].value.trim();
-      msg.className = 'form-msg err';
-      if (!serv) { msg.textContent = 'Elige el servicio que necesitas.'; return; }
-      if (!/^\d{5}$/.test(cp)) { msg.textContent = 'Introduce un código postal válido de 5 dígitos.'; return; }
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Introduce un email válido.'; return; }
-      // TODO: conectar con el backend / servicio de formularios.
-      msg.className = 'form-msg ok';
-      msg.textContent = '¡Recibido! Te avisaremos en cuanto tengamos profesionales disponibles en tu zona.';
-      form.reset();
-    });
+  // Animaciones de entrada al hacer scroll
+  var reveal = $$('[data-reveal]');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveal.forEach(function (el) { io.observe(el); });
+  } else {
+    reveal.forEach(function (el) { el.classList.add('in'); });
   }
 
   // Banner de cookies
-  var banner = document.getElementById('cookie-banner');
+  var banner = $('#cookie-banner');
   function getConsent() { try { return localStorage.getItem('em_cookies'); } catch (e) { return null; } }
   function setConsent(v) { try { localStorage.setItem('em_cookies', v); } catch (e) {} if (banner) banner.classList.remove('show'); }
   if (banner) {
     if (!getConsent()) { banner.classList.add('show'); }
-    document.getElementById('cookie-accept').addEventListener('click', function () { setConsent('all'); });
-    document.getElementById('cookie-reject').addEventListener('click', function () { setConsent('necessary'); });
+    $('#cookie-accept').addEventListener('click', function () { setConsent('all'); });
+    $('#cookie-reject').addEventListener('click', function () { setConsent('necessary'); });
   }
-  var reset = document.getElementById('cookie-reset');
+  var reset = $('#cookie-reset');
   if (reset) {
     reset.addEventListener('click', function () {
       try { localStorage.removeItem('em_cookies'); } catch (e) {}

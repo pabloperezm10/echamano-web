@@ -12,13 +12,24 @@
   <meta property="og:title" content="Política de privacidad | EchaMano">
   <meta property="og:description" content="Cómo tratamos y protegemos tus datos personales en echamano.es.">
   <meta property="og:url" content="https://echamano.es/politica-de-privacidad.html">
+  <meta name="theme-color" content="#ff6b2c">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <header class="site-header"><div class="container nav">
-    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">✓</span>Echa<b>Mano</b></a>
-    <a class="btn btn-outline" href="/">Volver al inicio</a>
-  </div></header>
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="logo" href="/" aria-label="EchaMano, inicio"><span class="logo-mark" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Echa<b>Mano</b></span></a>
+      <a class="btn btn-primary btn-sm nav-cta" href="/#presupuesto">Pedir presupuesto</a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/#como-funciona">Cómo funciona</a></li>
+        <li><a href="/#confianza">Garantías</a></li>
+        <li><a href="/#captacion">Para profesionales</a></li>
+      </ul>
+    </div>
+  </header>
 
   <main class="container legal">
     <h1>Política de privacidad</h1>
@@ -32,7 +43,7 @@
     </ul>
 
     <h2>2. Datos que tratamos y finalidades</h2>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Finalidad</th><th>Datos</th><th>Base jurídica</th></tr></thead>
       <tbody>
         <tr><td>Gestionar solicitudes de presupuesto y ponerte en contacto con profesionales</td><td>Email, código postal, servicio solicitado y descripción del trabajo</td><td>Ejecución de medidas precontractuales a petición del interesado (art. 6.1.b RGPD)</td></tr>
@@ -41,7 +52,7 @@
         <tr><td>Comunicaciones comerciales (solo si las aceptas)</td><td>Email</td><td>Consentimiento (art. 6.1.a)</td></tr>
         <tr><td>Cumplimiento de obligaciones legales</td><td>Datos fiscales y de facturación</td><td>Obligación legal (art. 6.1.c)</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <h2>3. Destinatarios</h2>
     <p>Tus datos de la solicitud se comunicarán a los profesionales o empresas que puedan atenderla. También podrán acceder proveedores de servicios (alojamiento, correo, herramientas técnicas) que actúan como encargados del tratamiento, y las administraciones públicas cuando exista obligación legal.</p>
@@ -59,8 +70,28 @@
     <p>Podremos actualizar esta política para adaptarla a cambios legales o del servicio. La versión vigente estará siempre en esta página.</p>
   </main>
 
-  <footer class="site-footer"><div class="container">
-    <p class="copy" style="border:0;margin:0;padding:0">© 2026 EchaMano · <a href="/aviso-legal.html">Aviso legal</a> · <a href="/politica-de-privacidad.html">Privacidad</a> · <a href="/cookies.html">Cookies</a></p>
-  </div></footer>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="EchaMano, inicio"><span class="logo-mark" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Echa<b>Mano</b></span></a>
+          <p style="margin-top:.8rem">Conectamos a particulares con profesionales y empresas cualificadas.</p>
+        </div>
+        <nav aria-label="Servicios"><h3>Servicios</h3><ul><li><a href="/#servicios">Reformas</a></li><li><a href="/#servicios">Electricistas</a></li><li><a href="/#servicios">Fontaneros</a></li><li><a href="/#servicios">Limpieza</a></li></ul></nav>
+        <nav aria-label="EchaMano"><h3>EchaMano</h3><ul><li><a href="/#como-funciona">Cómo funciona</a></li><li><a href="/#captacion">Para profesionales</a></li><li><a href="mailto:iaproyectosppm@gmail.com">Contacto</a></li></ul></nav>
+        <nav aria-label="Legal"><h3>Legal</h3><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/politica-de-privacidad.html">Privacidad</a></li><li><a href="/cookies.html">Cookies</a></li></ul></nav>
+      </div>
+      <p class="copy">© <span id="year">2026</span> EchaMano · echamano.es · Contacto y privacidad: <a href="mailto:iaproyectosppm@gmail.com">iaproyectosppm@gmail.com</a></p>
+    </div>
+  </footer>
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Más información en nuestra <a href="/cookies.html">política de cookies</a>.</p>
+    <div class="cookie-actions">
+      <button id="cookie-accept" class="btn btn-primary btn-sm" type="button">Aceptar todas</button>
+      <button id="cookie-reject" class="btn btn-outline btn-sm" type="button">Solo necesarias</button>
+    </div>
+  </div>
+
+  <script src="/js/main.js" defer></script>
 </body>
 </html>
