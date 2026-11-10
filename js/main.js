@@ -104,6 +104,44 @@
     });
   }
 
+  // Formulario de registro de profesionales (Netlify Forms vía fetch)
+  var reg = $("#registro");
+  if (reg) {
+    var rmsg = $("#form-msg");
+    var rbtn = $("button[type=\"submit\"]", reg);
+    var rset = function (t, c) { rmsg.textContent = t; rmsg.className = "form-msg " + (c || ""); };
+    var rbad = function (el, t) { el.setAttribute("aria-invalid", "true"); el.focus(); rset(t, "err"); };
+    $$("input, select", reg).forEach(function (el) { el.addEventListener("input", function () { el.removeAttribute("aria-invalid"); }); });
+
+    reg.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = reg.elements;
+      $$("[aria-invalid]", reg).forEach(function (el) { el.removeAttribute("aria-invalid"); });
+      var tel = f.telefono.value.replace(/[ .-]/g, "").replace(/^([+]34|0034)/, "");
+
+      if (f.nombre.value.trim().length < 2) return rbad(f.nombre, "Indica tu nombre o nombre comercial.");
+      if (!f.especialidad.value) return rbad(f.especialidad, "Selecciona tu especialidad o sector.");
+      if (!/^[67][0-9]{8}$/.test(tel)) return rbad(f.telefono, "Introduce un teléfono móvil español válido (9 dígitos).");
+      if (!/^[^@ ]+@[^@ ]+[.][^@ ]+$/.test(f.email.value.trim())) return rbad(f.email, "Introduce un email válido.");
+      if (f.zonas.value.trim().length < 2) return rbad(f.zonas, "Indica los códigos postales o zonas donde trabajas.");
+      if (!f.aceptacion.checked) return rbad(f.aceptacion, "Debes aceptar la política de privacidad y los términos.");
+
+      rbtn.disabled = true;
+      rset("Enviando…");
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(new FormData(reg)).toString()
+      }).then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        window.location.href = "/gracias-profesionales.html";
+      }).catch(function () {
+        rset("No hemos podido enviar tu registro. Inténtalo de nuevo o escríbenos a iaproyectosppm@gmail.com.", "err");
+        rbtn.disabled = false;
+      });
+    });
+  }
+
   // Animaciones de entrada al hacer scroll
   var reveal = $$('[data-reveal]');
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

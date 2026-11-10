@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro gratuito para profesionales | EchaMano</title>
+  <meta name="description" content="Regístrate gratis como profesional o empresa de servicios en EchaMano, recibe solicitudes de clientes en tu zona y paga solo cuando decidas contactar.">
+  <meta name="robots" content="index, follow">
+  
+  <link rel="canonical" href="https://echamano.es/registro-profesionales.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Registro gratuito para profesionales | EchaMano">
+  <meta property="og:description" content="Regístrate gratis como profesional o empresa de servicios en EchaMano, recibe solicitudes de clientes en tu zona y paga solo cuando decidas contactar.">
+  <meta property="og:url" content="https://echamano.es/registro-profesionales.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#ff6b2c">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="logo" href="/" aria-label="EchaMano, inicio"><span class="logo-mark" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Echa<b>Mano</b></span></a>
+      <a class="btn btn-primary btn-sm nav-cta" href="/#presupuesto">Pedir presupuesto</a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/#como-funciona">Cómo funciona</a></li>
+        <li><a href="/#confianza">Garantías</a></li>
+        <li><a href="/#captacion">Para profesionales</a></li>
+        <li><a href="/registro-profesionales.html">Registro profesionales</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container reg">
+    <div class="reg-head">
+      <span class="eyebrow">Para profesionales y empresas</span>
+      <h1>Regístrate gratis en EchaMano</h1>
+      <p class="lead">Recibe solicitudes de clientes de tu zona. Registro gratuito y sin permanencia, con 3 solicitudes de presupuesto gratis de bienvenida*.</p>
+    </div>
+
+    <div class="request-card reg-card">
+      <form id="registro" name="registro-profesionales" method="POST" action="/gracias-profesionales.html" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="registro-profesionales">
+        <p class="hp" aria-hidden="true"><label>No rellenar: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="field">
+          <label for="nombre">Nombre / Nombre comercial</label>
+          <input id="nombre" name="nombre" autocomplete="organization" placeholder="Ej. Reformas García" required>
+        </div>
+        <div class="field">
+          <label for="especialidad">Especialidad o sector</label>
+          <select id="especialidad" name="especialidad" required>
+            <option value="">Selecciona tu sector…</option>
+            <option>Fontanería</option>
+            <option>Electricidad</option>
+            <option>Reformas</option>
+            <option>Pintura</option>
+            <option>Climatización</option>
+            <option>Otros</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="telefono">Teléfono móvil <span class="small">(para avisos por WhatsApp)</span></label>
+          <input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="600 123 456" required>
+        </div>
+        <div class="field">
+          <label for="email">Email de contacto</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@empresa.com" required>
+        </div>
+        <div class="field">
+          <label for="zonas">Códigos postales o zonas donde trabajas</label>
+          <input id="zonas" name="zonas" placeholder="Ej. 11001, 11002 o Cádiz capital" required>
+        </div>
+        <label class="check" for="aceptacion">
+          <input id="aceptacion" name="aceptacion" type="checkbox" value="aceptada" required>
+          <span>He leído y acepto la <a href="/politica-de-privacidad.html">política de privacidad</a> (RGPD), el <a href="/aviso-legal.html">aviso legal</a> y los términos para profesionales, y consiento que me contacten por WhatsApp y email para gestionar mi alta.</span>
+        </label>
+        <button class="btn btn-primary btn-block" type="submit">Registrar mi empresa gratis <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p id="form-msg" class="form-msg" role="status" aria-live="polite"></p>
+        <p class="small promo-note">* Promoción de bienvenida válida para nuevos registros de profesionales.</p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="EchaMano, inicio"><span class="logo-mark" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Echa<b>Mano</b></span></a>
+          <p style="margin-top:.8rem">Conectamos a particulares con profesionales y empresas cualificadas.</p>
+        </div>
+        <nav aria-label="Servicios"><h3>Servicios</h3><ul><li><a href="/#servicios">Reformas</a></li><li><a href="/#servicios">Electricistas</a></li><li><a href="/#servicios">Fontaneros</a></li><li><a href="/#servicios">Limpieza</a></li></ul></nav>
+        <nav aria-label="EchaMano"><h3>EchaMano</h3><ul><li><a href="/#como-funciona">Cómo funciona</a></li><li><a href="/#captacion">Para profesionales</a></li><li><a href="/registro-profesionales.html">Registro profesionales</a></li><li><a href="mailto:iaproyectosppm@gmail.com">Contacto</a></li></ul></nav>
+        <nav aria-label="Legal"><h3>Legal</h3><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/politica-de-privacidad.html">Privacidad</a></li><li><a href="/cookies.html">Cookies</a></li></ul></nav>
+      </div>
+      <p class="copy">© <span id="year">2026</span> EchaMano · echamano.es · Contacto y privacidad: <a href="mailto:iaproyectosppm@gmail.com">iaproyectosppm@gmail.com</a></p>
+    </div>
+  </footer>
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Más información en nuestra <a href="/cookies.html">política de cookies</a>.</p>
+    <div class="cookie-actions">
+      <button id="cookie-accept" class="btn btn-primary btn-sm" type="button">Aceptar todas</button>
+      <button id="cookie-reject" class="btn btn-outline btn-sm" type="button">Solo necesarias</button>
+    </div>
+  </div>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
