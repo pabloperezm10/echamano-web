@@ -65,7 +65,20 @@
     });
   });
 
-  // Formulario de presupuestos (Netlify Forms vía fetch, con fallback de envío normal)
+  // Envío de formularios a la función de Supabase (reparto automático a profesionales).
+  // Sin JavaScript, el formulario cae al envío estándar de Netlify Forms (atributo data-netlify).
+  var API = 'https://qnqmjsvrclxjfvjigesp.supabase.co/functions/v1/solicitudes';
+  function sendForm(formEl, name) {
+    var data = { form: name };
+    new FormData(formEl).forEach(function (v, k) { if (k !== 'form-name') data[k] = v; });
+    return fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  }
+
+  // Formulario de presupuestos
   var form = $('#buscador');
   if (form) {
     var msg = $('#form-msg');
@@ -85,21 +98,22 @@
       if (!f.servicio.value) return invalid(f.servicio, 'Elige el servicio que necesitas.');
       if (!/^\d{5}$/.test(f.cp.value.trim())) return invalid(f.cp, 'Introduce un código postal válido de 5 dígitos.');
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())) return invalid(f.email, 'Introduce un email válido.');
+      var tel = f.telefono.value.replace(/[ .-]/g, '').replace(/^([+]34|0034)/, '');
+      if (!/^[67][0-9]{8}$/.test(tel)) return invalid(f.telefono, 'Introduce un teléfono móvil español válido (9 dígitos).');
       if (!f.privacidad.checked) return invalid(f.privacidad, 'Debes aceptar la política de privacidad.');
 
       btn.disabled = true;
       setMsg('Enviando…');
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
-      }).then(function (res) {
+      sendForm(form, 'presupuestos').then(function (res) {
+        if (res.status === 429) { throw new Error('limit'); }
         if (!res.ok) throw new Error('HTTP ' + res.status);
         form.reset();
         $$('.cat').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
         setMsg('¡Solicitud enviada! Los profesionales de tu zona te escribirán directamente a tu email.', 'ok');
-      }).catch(function () {
-        setMsg('No hemos podido enviar la solicitud. Inténtalo de nuevo en unos minutos.', 'err');
+      }).catch(function (err) {
+        setMsg(err && err.message === 'limit'
+          ? 'Has enviado varias solicitudes hoy. Inténtalo de nuevo mañana.'
+          : 'No hemos podido enviar la solicitud. Inténtalo de nuevo en unos minutos.', 'err');
       }).then(function () { btn.disabled = false; });
     });
   }
@@ -128,11 +142,7 @@
 
       rbtn.disabled = true;
       rset("Enviando…");
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(new FormData(reg)).toString()
-      }).then(function (res) {
+      sendForm(reg, "registro-profesionales").then(function (res) {
         if (!res.ok) throw new Error("HTTP " + res.status);
         window.location.href = "/gracias-profesionales.html";
       }).catch(function () {

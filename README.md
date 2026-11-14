@@ -1,27 +1,27 @@
 # EchaMano (echamano.es)
 
-Sitio web estático (HTML5 + CSS + JS) con funciones serverless de Netlify. Conecta a particulares con profesionales y empresas de servicios del hogar.
+Sitio web estático (HTML5 + CSS + JS) con backend en Supabase. Conecta a particulares con profesionales y empresas de servicios del hogar.
 
 ## Estructura
-- `index.html` — portada (formulario Netlify `presupuestos`); `registro-profesionales.html` — alta de profesionales (formulario `registro-profesionales`)
+- `index.html` — portada y formulario de solicitud (`presupuestos`); `registro-profesionales.html` — alta de profesionales
 - `gracias.html`, `gracias-profesionales.html` — confirmaciones (noindex)
 - `aviso-legal.html`, `politica-de-privacidad.html`, `cookies.html` — legales (únicas páginas donde aparece el correo del titular)
-- `css/styles.css`, `js/main.js`, `sitemap.xml`, `robots.txt`, `favicon.svg`
-- `netlify/functions/submission-created.js` — reparto automático de solicitudes
-- `supabase/migrations/001_reparto_solicitudes.sql` — tablas `profesionales`, `solicitudes`, `envios`
+- `css/styles.css`, `js/main.js`, `sitemap.xml`, `robots.txt`, `favicon.svg`, `netlify.toml`
+- `supabase/functions/solicitudes/index.ts` — Edge Function de reparto (desplegada)
+- `supabase/migrations/` — tablas `profesionales`, `solicitudes`, `envios` (aplicadas)
 
 ## Cómo funciona el reparto
-1. El profesional se registra en `/registro-profesionales.html` → la función lo guarda en Supabase con `verificado = false`.
+1. El profesional se registra en `/registro-profesionales.html` → queda en Supabase con `verificado = false`.
 2. Tras comprobar sus datos, pones `verificado = true` en el panel de Supabase (tabla `profesionales`).
-3. Cuando un particular envía el formulario `presupuestos`, la función guarda la solicitud y la manda por email (máx. 5) a profesionales verificados del mismo sector y misma zona postal (3 primeros dígitos del CP), con `Reply-To` = email del cliente. **El profesional responde directamente al cliente; nadie de EchaMano recibe esos emails.**
-4. Cada envío descuenta 1 de `solicitudes_gratis` (3 de bienvenida). Con `ilimitado = true` no hay límite. Sin solicitudes y sin plan, el profesional deja de recibir envíos.
+3. Cuando un particular envía el formulario (email, **teléfono móvil obligatorio**, servicio, CP), la función lo guarda y manda un email (máx. 5) a profesionales verificados del mismo sector y zona (3 primeros dígitos del CP). El email incluye un **botón de WhatsApp** (`wa.me/34…` con mensaje pre-rellenado), y `Reply-To` apunta al email del cliente. **El profesional contacta directamente; nadie de EchaMano recibe esos emails.**
+4. Cada envío descuenta 1 de `solicitudes_gratis` (3 de bienvenida). Con `ilimitado = true` no hay límite.
+5. Anti-abuso: honeypot, validación en servidor y máx. 3 solicitudes por email y día.
 
-## Puesta en marcha
-1. Crear un proyecto Supabase y ejecutar `supabase/migrations/001_reparto_solicitudes.sql`.
-2. Crear cuenta en Resend y verificar el dominio `echamano.es` (hasta entonces solo puede enviar a tu propia cuenta).
-3. En Netlify → Site settings → Environment variables: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `MAIL_FROM` (p. ej. `EchaMano <solicitudes@echamano.es>`).
-4. En Netlify → Forms **no** actives notificaciones por email para `presupuestos` ni `registro-profesionales`.
-5. Desplegar. Las claves nunca van en el repositorio.
+## Estado de la puesta en marcha
+- Supabase: proyecto `qnqmjsvrclxjfvjigesp` (eu-west-3), tablas con RLS y función desplegada. ✅
+- Email: falta el secreto `RESEND_API_KEY` en Supabase (Edge Functions → Secrets) y, para enviar a cualquier destinatario, verificar el dominio `echamano.es` en Resend y fijar `MAIL_FROM` (p. ej. `EchaMano <solicitudes@echamano.es>`). Hasta entonces las solicitudes se guardan pero no se envían emails.
+- Hosting: desplegar el sitio en Netlify y apuntar el DNS de `echamano.es` (hoy en STRATO).
+- La web envía los formularios por JS a la función de Supabase; sin JS cae al envío estándar de Netlify Forms (`data-netlify`).
 
 ## Pendiente
 - Revisar las páginas legales con un profesional jurídico y completar el domicilio fiscal.

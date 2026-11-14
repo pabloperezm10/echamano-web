@@ -181,16 +181,20 @@
               <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required>
             </div>
             <div class="field">
+              <label for="telefono">Teléfono móvil <span class="small">(para que te escriban por WhatsApp)</span></label>
+              <input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="600 123 456" required>
+            </div>
+            <div class="field">
               <label for="descripcion">Detalles del trabajo <span class="small">(opcional)</span></label>
               <textarea id="descripcion" name="descripcion" rows="3" maxlength="1000" placeholder="Cuéntanos qué necesitas para recibir presupuestos más ajustados"></textarea>
             </div>
             <label class="check" for="privacidad">
               <input id="privacidad" name="privacidad" type="checkbox" value="aceptada" required>
-              <span>He leído y acepto la <a href="/politica-de-privacidad.html">política de privacidad</a>.</span>
+              <span>He leído y acepto la <a href="/politica-de-privacidad.html">política de privacidad</a> y que mi email y teléfono se compartan con los profesionales que atiendan mi solicitud.</span>
             </label>
             <button class="btn btn-primary btn-block" type="submit">Buscar profesionales <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
             <p id="form-msg" class="form-msg" role="status" aria-live="polite"></p>
-            <p class="form-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Tu email se comparte solo con los profesionales que atiendan tu solicitud, y ellos te escriben directamente.</p>
+            <p class="form-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Tu email y teléfono se comparten solo con los profesionales que atiendan tu solicitud, y ellos te escriben directamente.</p>
           </form>
         </div>
       </div>
