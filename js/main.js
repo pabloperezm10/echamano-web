@@ -97,9 +97,9 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         form.reset();
         $$('.cat').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
-        setMsg('¡Solicitud enviada! Te contactaremos en cuanto tengamos profesionales disponibles en tu zona.', 'ok');
+        setMsg('¡Solicitud enviada! Los profesionales de tu zona te escribirán directamente a tu email.', 'ok');
       }).catch(function () {
-        setMsg('No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos a iaproyectosppm@gmail.com.', 'err');
+        setMsg('No hemos podido enviar la solicitud. Inténtalo de nuevo en unos minutos.', 'err');
       }).then(function () { btn.disabled = false; });
     });
   }
@@ -136,7 +136,7 @@
         if (!res.ok) throw new Error("HTTP " + res.status);
         window.location.href = "/gracias-profesionales.html";
       }).catch(function () {
-        rset("No hemos podido enviar tu registro. Inténtalo de nuevo o escríbenos a iaproyectosppm@gmail.com.", "err");
+        rset("No hemos podido enviar tu registro. Inténtalo de nuevo en unos minutos.", "err");
         rbtn.disabled = false;
       });
     });

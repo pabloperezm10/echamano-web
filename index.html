@@ -34,7 +34,6 @@
         "name": "EchaMano",
         "url": "https://echamano.es/",
         "logo": "https://echamano.es/favicon.svg",
-        "email": "iaproyectosppm@gmail.com",
         "description": "Plataforma que conecta a particulares con empresas y profesionales cualificados de servicios del hogar en España.",
         "areaServed": { "@type": "Country", "name": "España" }
       },
@@ -169,6 +168,7 @@
                 <option>Pintor</option>
                 <option>Carpintero</option>
                 <option>Cerrajero</option>
+                <option>Climatización</option>
                 <option>Otro servicio</option>
               </select>
             </div>
@@ -180,13 +180,17 @@
               <label for="email">Tu email</label>
               <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required>
             </div>
+            <div class="field">
+              <label for="descripcion">Detalles del trabajo <span class="small">(opcional)</span></label>
+              <textarea id="descripcion" name="descripcion" rows="3" maxlength="1000" placeholder="Cuéntanos qué necesitas para recibir presupuestos más ajustados"></textarea>
+            </div>
             <label class="check" for="privacidad">
               <input id="privacidad" name="privacidad" type="checkbox" value="aceptada" required>
               <span>He leído y acepto la <a href="/politica-de-privacidad.html">política de privacidad</a>.</span>
             </label>
             <button class="btn btn-primary btn-block" type="submit">Buscar profesionales <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
             <p id="form-msg" class="form-msg" role="status" aria-live="polite"></p>
-            <p class="form-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Tus datos solo se usan para gestionar tu solicitud.</p>
+            <p class="form-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Tu email se comparte solo con los profesionales que atiendan tu solicitud, y ellos te escriben directamente.</p>
           </form>
         </div>
       </div>
@@ -238,7 +242,7 @@
           </li>
         </ul>
         <div class="pro-band-cta" data-reveal>
-          <a class="btn btn-primary btn-lg" href="mailto:iaproyectosppm@gmail.com?subject=Alta%20de%20profesional%20en%20EchaMano">Registrar mi empresa gratis <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-primary btn-lg" href="/registro-profesionales.html">Registrar mi empresa gratis <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <p class="small">Sin compromiso · Sin permanencia</p>
           <p class="small promo-note">* Promoción de bienvenida válida para nuevos registros de profesionales.</p>
         </div>
@@ -311,7 +315,7 @@
             <li>Tú decides qué trabajos aceptar</li>
             <li>Construye tu reputación online</li>
           </ul>
-          <a class="btn btn-light" href="mailto:iaproyectosppm@gmail.com?subject=Alta%20de%20profesional%20en%20EchaMano">Registrar mi negocio <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-light" href="/registro-profesionales.html">Registrar mi negocio <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
@@ -337,10 +341,10 @@
           <p style="margin-top:.8rem">Conectamos a particulares con profesionales y empresas cualificadas.</p>
         </div>
         <nav aria-label="Servicios"><h3>Servicios</h3><ul><li><a href="#servicios">Reformas</a></li><li><a href="#servicios">Electricistas</a></li><li><a href="#servicios">Fontaneros</a></li><li><a href="#servicios">Limpieza</a></li></ul></nav>
-        <nav aria-label="EchaMano"><h3>EchaMano</h3><ul><li><a href="#como-funciona">Cómo funciona</a></li><li><a href="#captacion">Para profesionales</a></li><li><a href="/registro-profesionales.html">Registro profesionales</a></li><li><a href="mailto:iaproyectosppm@gmail.com">Contacto</a></li></ul></nav>
+        <nav aria-label="EchaMano"><h3>EchaMano</h3><ul><li><a href="#como-funciona">Cómo funciona</a></li><li><a href="#captacion">Para profesionales</a></li><li><a href="/registro-profesionales.html">Registro profesionales</a></li></ul></nav>
         <nav aria-label="Legal"><h3>Legal</h3><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/politica-de-privacidad.html">Privacidad</a></li><li><a href="/cookies.html">Cookies</a></li></ul></nav>
       </div>
-      <p class="copy">© <span id="year">2026</span> EchaMano · echamano.es · Contacto y privacidad: <a href="mailto:iaproyectosppm@gmail.com">iaproyectosppm@gmail.com</a></p>
+      <p class="copy">© <span id="year">2026</span> EchaMano · echamano.es</p>
     </div>
   </footer>
 

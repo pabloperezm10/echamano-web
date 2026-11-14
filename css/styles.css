@@ -261,3 +261,4 @@ details p { margin: 0 0 1rem; color: var(--muted); }
 .reg-head .lead { margin-inline: auto; }
 .reg-card { box-shadow: var(--shadow); }
 @media (min-width: 900px) { .reg { padding: 3.5rem 0 5rem; } }
+textarea { resize: vertical; min-height: 5.5rem; }
