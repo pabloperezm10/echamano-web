@@ -75,16 +75,17 @@ async function registrarProfesional(d: Record<string, unknown>) {
   const email = clean(d.email, 200).toLowerCase();
   const nombre = clean(d.nombre, 150);
   const zonas = clean(d.zonas, 500);
+  const provincia = clean(d.provincia, 2);
   const especialidad = clean(d.especialidad, 40);
-  if (nombre.length < 2 || !ESPECIALIDADES.includes(especialidad) || !/^[67][0-9]{8}$/.test(telefono) || !isEmail(email) || zonas.length < 2) {
+  if (nombre.length < 2 || !ESPECIALIDADES.includes(especialidad) || !/^[67][0-9]{8}$/.test(telefono) || !isEmail(email) || !/^(0[1-9]|[1-4][0-9]|5[0-2])$/.test(provincia)) {
     return { status: 400, error: "datos_no_validos" };
   }
-  const codigos = Array.from(new Set(zonas.match(/\b\d{5}\b/g) ?? []));
+  const codigos = Array.from(new Set((zonas.match(/\b\d{5}\b/g) ?? []).filter((c) => c.startsWith(provincia))));
   try {
     await sb("profesionales", {
       method: "POST",
       headers: { Prefer: "return=minimal" },
-      body: JSON.stringify({ nombre, especialidad, telefono, email, zonas_texto: zonas, codigos_postales: codigos }),
+      body: JSON.stringify({ nombre, especialidad, telefono, email, provincia, zonas_texto: zonas || `Provincia ${provincia}`, codigos_postales: codigos }),
     });
   } catch (e) {
     if ((e as { status?: number }).status !== 409) throw e; // ya registrado: se trata como éxito
@@ -157,14 +158,18 @@ async function repartirSolicitud(d: Record<string, unknown>) {
   });
 
   const candidatos = await sb(
-    `profesionales?select=id,nombre,email,codigos_postales&verificado=eq.true` +
+    `profesionales?select=id,nombre,email,provincia,codigos_postales&verificado=eq.true` +
       `&especialidad=eq.${encodeURIComponent(SECTOR[servicio])}` +
       `&order=created_at.asc`,
   );
-  const zona = cp.slice(0, 3);
-  const elegidos = (candidatos as Array<{ id: string; nombre: string; email: string; codigos_postales: string[] }>)
-    .filter((p) => (p.codigos_postales ?? []).some((c) => c.slice(0, 3) === zona))
-    .slice(0, MAX_PROFESIONALES);
+  // Misma provincia (2 primeros dígitos del CP); primero los del mismo CP exacto
+  const prov = cp.slice(0, 2);
+  type Pro = { id: string; nombre: string; email: string; provincia: string | null; codigos_postales: string[] };
+  const enProvincia = (candidatos as Pro[]).filter((p) =>
+    p.provincia ? p.provincia === prov : (p.codigos_postales ?? []).some((c) => c.slice(0, 2) === prov));
+  const exactos = enProvincia.filter((p) => (p.codigos_postales ?? []).includes(cp));
+  const resto = enProvincia.filter((p) => !exactos.includes(p));
+  const elegidos = [...exactos, ...resto].slice(0, MAX_PROFESIONALES);
 
   let enviados = 0;
   for (const pro of elegidos) {

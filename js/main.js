@@ -137,7 +137,7 @@
       if (!f.especialidad.value) return rbad(f.especialidad, "Selecciona tu especialidad o sector.");
       if (!/^[67][0-9]{8}$/.test(tel)) return rbad(f.telefono, "Introduce un teléfono móvil español válido (9 dígitos).");
       if (!/^[^@ ]+@[^@ ]+[.][^@ ]+$/.test(f.email.value.trim())) return rbad(f.email, "Introduce un email válido.");
-      if (f.zonas.value.trim().length < 2) return rbad(f.zonas, "Indica los códigos postales o zonas donde trabajas.");
+      if (!f.provincia.value) return rbad(f.provincia, "Selecciona la provincia donde trabajas.");
       if (!f.aceptacion.checked) return rbad(f.aceptacion, "Debes aceptar la política de privacidad y los términos.");
 
       rbtn.disabled = true;
