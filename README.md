@@ -14,7 +14,7 @@ Sitio web estático (HTML5 + CSS + JS) con backend en Supabase. Conecta a partic
 1. El profesional se registra en `/registro-profesionales.html` → queda en Supabase con `verificado = false`.
 2. Tras comprobar sus datos, pones `verificado = true` en el panel de Supabase (tabla `profesionales`).
 3. Cuando un particular envía el formulario (email, **teléfono móvil obligatorio**, servicio, CP), la función lo guarda y manda un email (máx. 5) a profesionales verificados del mismo sector y zona (3 primeros dígitos del CP). El email incluye un **botón de WhatsApp** (`wa.me/34…` con mensaje pre-rellenado), y `Reply-To` apunta al email del cliente. **El profesional contacta directamente; nadie de EchaMano recibe esos emails.**
-4. Cada envío descuenta 1 de `solicitudes_gratis` (3 de bienvenida). Con `ilimitado = true` no hay límite.
+4. Lanzamiento 100 % gratuito para profesionales: sin límite de solicitudes ni cobros. Las columnas `solicitudes_gratis` / `ilimitado` se conservan por si más adelante se introduce un plan de pago, pero el reparto ya no las consulta.
 5. Anti-abuso: honeypot, validación en servidor y máx. 3 solicitudes por email y día.
 
 ## Estado de la puesta en marcha
@@ -27,7 +27,7 @@ Sitio web estático (HTML5 + CSS + JS) con backend en Supabase. Conecta a partic
 - Revisar las páginas legales con un profesional jurídico y completar el domicilio fiscal.
 - Redactar los «términos para profesionales» (la casilla de registro los menciona).
 - Añadir `img/og-image.png` (1200×630).
-- Definir y construir el cobro por contacto (hoy solo existe el límite de 3 solicitudes gratis).
+- Cuando termine el lanzamiento gratuito: decidir el modelo de pago y actualizar la web, los términos y la política de privacidad.
 
 ## Desarrollo local
 Las rutas son absolutas (`/css/...`): sírvelo desde la raíz con `npx serve .`

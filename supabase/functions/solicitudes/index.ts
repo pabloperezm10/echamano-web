@@ -154,7 +154,7 @@ async function repartirSolicitud(d: Record<string, unknown>) {
   const candidatos = await sb(
     `profesionales?select=id,nombre,email,codigos_postales&verificado=eq.true` +
       `&especialidad=eq.${encodeURIComponent(SECTOR[servicio])}` +
-      `&or=(ilimitado.eq.true,solicitudes_gratis.gt.0)&order=created_at.asc`,
+      `&order=created_at.asc`,
   );
   const zona = cp.slice(0, 3);
   const elegidos = (candidatos as Array<{ id: string; nombre: string; email: string; codigos_postales: string[] }>)
