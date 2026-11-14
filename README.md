@@ -6,7 +6,7 @@ Sitio web estático (HTML5 + CSS + JS) con backend en Supabase. Conecta a partic
 - `index.html` — portada y formulario de solicitud (`presupuestos`); `registro-profesionales.html` — alta de profesionales
 - `gracias.html`, `gracias-profesionales.html` — confirmaciones (noindex)
 - `aviso-legal.html`, `politica-de-privacidad.html`, `cookies.html` — legales (únicas páginas donde aparece el correo del titular)
-- `css/styles.css`, `js/main.js`, `sitemap.xml`, `robots.txt`, `favicon.svg`, `netlify.toml`
+- `img/og-image.png` (vista previa 1200×630), `css/styles.css`, `js/main.js`, `sitemap.xml`, `robots.txt`, `favicon.svg`, `netlify.toml`
 - `supabase/functions/solicitudes/index.ts` — Edge Function de reparto (desplegada)
 - `supabase/migrations/` — tablas `profesionales`, `solicitudes`, `envios` (aplicadas)
 
@@ -25,8 +25,6 @@ Sitio web estático (HTML5 + CSS + JS) con backend en Supabase. Conecta a partic
 
 ## Pendiente
 - Revisar las páginas legales con un profesional jurídico y completar el domicilio fiscal.
-- Redactar los «términos para profesionales» (la casilla de registro los menciona).
-- Añadir `img/og-image.png` (1200×630).
 - Cuando termine el lanzamiento gratuito: decidir el modelo de pago y actualizar la web, los términos y la política de privacidad.
 
 ## Desarrollo local
