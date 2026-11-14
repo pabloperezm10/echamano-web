@@ -246,7 +246,7 @@ details p { margin: 0 0 1rem; color: var(--muted); }
   .steps { grid-template-columns: repeat(4, 1fr); }
   .cta-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .cta-box { padding: 2.6rem; }
-  .cat-grid { grid-template-columns: repeat(8, 1fr); gap: 1rem; }
+  .cat-grid { grid-template-columns: repeat(7, 1fr); gap: 1rem; }
   .cat { padding: 1.4rem .5rem; font-size: .92rem; }
 }
 

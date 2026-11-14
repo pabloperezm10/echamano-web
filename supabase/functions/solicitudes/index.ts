@@ -20,9 +20,14 @@ const SECTOR: Record<string, string> = {
   "Limpieza": "Otros",
   "Carpintero": "Otros",
   "Cerrajero": "Otros",
+  "Soldadura y montaje de estructuras": "Soldadura y montaje de estructuras",
+  "Jardinería": "Jardinería",
+  "Albañilería y tejados": "Albañilería y tejados",
+  "Mudanzas y portes": "Mudanzas y portes",
+  "Persianas y ventanas": "Persianas y ventanas",
   "Otro servicio": "Otros",
 };
-const ESPECIALIDADES = ["Fontanería", "Electricidad", "Reformas", "Pintura", "Climatización", "Otros"];
+const ESPECIALIDADES = ["Fontanería", "Electricidad", "Reformas", "Pintura", "Climatización", "Soldadura y montaje de estructuras", "Jardinería", "Albañilería y tejados", "Mudanzas y portes", "Persianas y ventanas", "Otros"];
 
 const SB_URL = Deno.env.get("SUPABASE_URL")!;
 const SB_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
