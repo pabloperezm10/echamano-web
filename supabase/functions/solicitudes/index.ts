@@ -121,7 +121,7 @@ function correoParaProfesional(sol: Record<string, string>, nombre: string) {
 async function enviarEmail(to: string, replyTo: string, subject: string, html: string) {
   const key = Deno.env.get("RESEND_API_KEY");
   if (!key) throw new Error("RESEND_API_KEY no configurada");
-  const from = Deno.env.get("MAIL_FROM") ?? "EchaMano <onboarding@resend.dev>";
+  const from = Deno.env.get("MAIL_FROM") ?? "EchaMano <hola@echamano.es>";
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
