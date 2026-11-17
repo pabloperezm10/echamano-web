@@ -81,6 +81,7 @@ async function registrarProfesional(d: Record<string, unknown>) {
     return { status: 400, error: "datos_no_validos" };
   }
   const codigos = Array.from(new Set((zonas.match(/\b\d{5}\b/g) ?? []).filter((c) => c.startsWith(provincia))));
+  let nuevo = true;
   try {
     await sb("profesionales", {
       method: "POST",
@@ -89,8 +90,27 @@ async function registrarProfesional(d: Record<string, unknown>) {
     });
   } catch (e) {
     if ((e as { status?: number }).status !== 409) throw e; // ya registrado: se trata como éxito
+    nuevo = false;
   }
+  if (nuevo) await avisarHito();
   return { status: 200 };
+}
+
+// Avisa al administrador cada vez que el total de profesionales llega a un múltiplo de 10
+async function avisarHito() {
+  try {
+    const filas = await sb("profesionales?select=id") as unknown[];
+    const total = filas.length;
+    if (total === 0 || total % 10 !== 0) return;
+    await enviarEmail(
+      "iaproyectosppm@gmail.com",
+      "iaproyectosppm@gmail.com",
+      `EchaMano: ya sois ${total} profesionales registrados`,
+      `<p>Ya hay <strong>${total}</strong> profesionales registrados en EchaMano.</p>`,
+    );
+  } catch (e) {
+    console.error("Fallo avisando de hito:", (e as Error).message);
+  }
 }
 
 // Teléfono móvil español: quita espacios/guiones y el prefijo (+34, 0034 o 34) -> 9 dígitos
