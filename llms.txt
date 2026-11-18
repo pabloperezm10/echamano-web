@@ -1,0 +1,22 @@
+# EchaMano
+
+> EchaMano (https://echamano.es) es una plataforma española que conecta a particulares con profesionales y empresas de servicios del hogar. El cliente describe lo que necesita, indica su código postal y recibe contacto de profesionales de su zona. Para el particular es gratuito y sin compromiso. El servicio lo presta y factura directamente el profesional; EchaMano solo facilita el contacto.
+
+## Para particulares
+- [Pide tu presupuesto gratis](https://echamano.es/): formulario en la página principal. Se elige el servicio, el código postal y se dejan email y teléfono. Los datos solo se comparten con los profesionales que atienden la solicitud.
+- [Cómo funciona](https://echamano.es/#como-funciona): pasos para particulares y para profesionales.
+- [Preguntas frecuentes](https://echamano.es/#faq-title): zonas de cobertura, cómo se verifica a los profesionales, quién cobra el servicio.
+
+## Para profesionales
+- [Registro gratuito para profesionales](https://echamano.es/registro-profesionales.html): alta de autónomos, manitas y empresas. No hace falta tener empresa. Se indica especialidad, provincia y zonas de trabajo, y se reciben por email las solicitudes de clientes de la zona.
+
+## Servicios disponibles
+Reformas, electricidad, fontanería, pintura, climatización, manitas y pequeñas reparaciones, limpieza, carpintería, cerrajería, soldadura y montaje de estructuras, jardinería, albañilería y tejados, mudanzas y portes, persianas y ventanas.
+
+## Cobertura
+España. Los profesionales se asignan por provincia y código postal de la solicitud.
+
+## Información legal
+- [Aviso legal](https://echamano.es/aviso-legal.html)
+- [Política de privacidad](https://echamano.es/politica-de-privacidad.html)
+- [Política de cookies](https://echamano.es/cookies.html)
